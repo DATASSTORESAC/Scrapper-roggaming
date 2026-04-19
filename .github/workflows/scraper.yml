@@ -1,0 +1,33 @@
+name: Run Scraper
+
+on:
+  schedule:
+    # Ejecutar cada 6 horas (puedes ajustar esto: https://crontab.guru/)
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run Scraper
+      env:
+        # Estos deben configurarse en GitHub -> Settings -> Secrets and variables -> Actions
+        API_URL: ${{ secrets.API_URL }}
+        API_TOKEN: ${{ secrets.API_TOKEN }}
+        HEADLESS: true
+      run:
+        npm run scrape
