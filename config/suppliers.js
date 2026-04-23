@@ -7,7 +7,7 @@
 export const SUPPLIERS = {
 
     pcmaster: {
-        id: 2,
+        id: 12,
         code: 'PCMASTER',
         name: 'PCMaster Store',
         url: 'https://pcmasterstore.com/distribucion',
@@ -34,7 +34,7 @@ export const SUPPLIERS = {
     },
 
     caleta: {
-        id: 3,
+        id: 13,
         code: 'CALETA',
         name: 'Caleta',
         url: 'https://www.asesores555.caleta.pe/distribucion2.php',
